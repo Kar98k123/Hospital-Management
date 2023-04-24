@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home page </title>
+</head>
+<body>
+ <h1> welcome to the home page Mr. Django!!!!!!!!!!</h1>
+ {% if request.user.is_authenticated %}
+ <li><a href="{% url 'logout' %}" class="btn btn--sub">Logout</a></li>
+ {% endif %}
+</body>
+</html>

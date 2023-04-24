@@ -1,0 +1,58 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<section class="projectsList">
+    <div class="container">
+        <div class="grid grid--three">
+{% if message %}
+<h1> {{message}} </h1>
+{% endif %}
+<br></br>
+{% if request.user.is_patient %}
+
+<form class="form" action="" method="POST">
+    {% csrf_token %}
+    <p>Take appointment with this doctor</p>
+
+    {% for field in form %}
+                <!-- Input:Text -->
+                <div class="form__field">
+                    <label for="formInput#text">{{field.label}}</label>
+                    {{field}}
+                </div>
+    {% endfor %}
+    <a class="btn btn--sub btn--lg  my-md" href="{% url 'blogs' %}"> Refresh </a>
+    <input class="btn btn--sub btn--lg  my-md" type="submit" value="Confirm" />
+   
+</form>
+{% endif %}
+<div> <br> </br> </div>
+            
+            <div class="column">
+                <div class="card project">
+                    <a href="#" class="project">
+                        <img class="project__thumbnail" src="{{blogs.featured_image.url}}" alt="project thumbnail" />
+                        <div class="card__body">
+                            <h3 class="project__title">{{blogs.username}}</h3>
+                            <p><a class="project__author" href="">E-mail
+                                    {{blogs.email}}</a>
+                            </p>
+                            
+                            
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+</section>
+
+
+</main>
+
+
+
+
+{% endblock %}
